@@ -1,10 +1,10 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Color32, Grid, RichText, Ui};
-use mousedrive::config::Config;
-use mousedrive::control::Snapshot;
-use mousedrive::logic::throttle_cut_factor;
-use mousedrive::output::{BUTTON_GEAR_DOWN, BUTTON_GEAR_UP};
+use mouseflight::config::Config;
+use mouseflight::control::Snapshot;
+use mouseflight::logic::throttle_cut_factor;
+use mouseflight::output::{BUTTON_GEAR_DOWN, BUTTON_GEAR_UP};
 
 use super::brake_tab::phase_index;
 use super::widgets::{Cx, bar, key_text, pill, steering_bar};

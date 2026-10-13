@@ -28,12 +28,18 @@ pub struct Owner {
 pub struct AxisCaps {
     pub x: bool,
     pub y: bool,
+    pub z: bool,
     pub rz: bool,
 }
 
 impl AxisCaps {
     pub fn missing(&self) -> Vec<&'static str> {
-        [(self.x, "X"), (self.y, "Y"), (self.rz, "Rz")]
+        [
+            (self.x, "X"),
+            (self.y, "Y"),
+            (self.z, "Z"),
+            (self.rz, "Rz"),
+        ]
             .iter()
             .filter(|(present, _)| !present)
             .map(|(_, name)| *name)

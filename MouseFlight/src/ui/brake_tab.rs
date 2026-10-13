@@ -2,11 +2,11 @@
 
 use eframe::egui::{CollapsingHeader, Color32, RichText, Ui};
 use egui_plot::{Legend, Line, LineStyle, Plot, PlotPoints, Points, Polygon, VLine};
-use mousedrive::config::Tuning;
-use mousedrive::control::Snapshot;
-use mousedrive::curve::Curve;
-use mousedrive::logic::BrakePhase;
-use mousedrive::preview::{BrakeTimeline, PhaseSpan, brake_timeline, full_press_ms};
+use mouseflight::config::Tuning;
+use mouseflight::control::Snapshot;
+use mouseflight::curve::Curve;
+use mouseflight::logic::BrakePhase;
+use mouseflight::preview::{BrakeTimeline, PhaseSpan, brake_timeline, full_press_ms};
 
 use super::widgets::{Cx, Fmt, Param, check_row, grid, param_row, param_row_i32, section};
 use crate::curve_editor::{CurveDisplay, curve_editor};

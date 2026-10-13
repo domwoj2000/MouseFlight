@@ -35,7 +35,7 @@ pub(super) static EN: Strings = Strings {
     pending_apply: "Applies when the pedals are released…",
 
     setup_title: "Setup and health check",
-    setup_intro: "Each row runs one check. Follow the step under a ✖ row, then press “Check again”; MouseDrive also keeps retrying the connection on its own.",
+    setup_intro: "Each row runs one check. Follow the step under a ✖ row, then press “Check again”; MouseFlight also keeps retrying the connection on its own.",
     chk_dll: "vJoy installed",
     chk_driver: "vJoy driver enabled",
     chk_versions: "DLL and driver version",
@@ -268,6 +268,7 @@ pub(super) static EN: Strings = Strings {
     window_secs: "Window",
     tr_steer_out: "Steering (output)",
     tr_steer_raw: "Steering (raw)",
+    tr_pitch: "Pitch",
     tr_throttle: "Throttle",
     tr_brake: "Brake",
     tr_lmb: "Left click",
@@ -322,7 +323,7 @@ pub(super) static EN: Strings = Strings {
     tip_colorblind: "Throttle blue, brake orange. Brake is always drawn dashed in charts.",
     ui_zoom: "Interface scale (%)",
     exit_on_close: "Exit on close",
-    tip_exit_on_close: "When off, the × button minimises the window; MouseDrive keeps running.",
+    tip_exit_on_close: "When off, the × button minimises the window; MouseFlight keeps running.",
     sec_game: "In-game settings",
     game_checklist: [
         "Deadzone: 0",

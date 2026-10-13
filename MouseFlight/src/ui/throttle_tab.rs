@@ -2,16 +2,16 @@
 
 use eframe::egui::{CollapsingHeader, RichText, Ui};
 use egui_plot::{Line, Plot, PlotPoints, Points};
-use mousedrive::config::Tuning;
-use mousedrive::logic::throttle_cut_factor;
-use mousedrive::preview::{cut_curve, cut_summary};
+use mouseflight::config::Tuning;
+use mouseflight::logic::throttle_cut_factor;
+use mouseflight::preview::{cut_curve, cut_summary};
 
 use super::widgets::{Cx, Fmt, Param, check_row, grid, param_row, param_row_i32};
 use crate::curve_editor::{CurveDisplay, curve_editor};
 use crate::lang::fill;
 
 const CUT_FMT: Fmt = Fmt::Pct {
-    scale: mousedrive::logic::THROTTLE_CUT_REFERENCE,
+    scale: mouseflight::logic::THROTTLE_CUT_REFERENCE,
     decimals: 1,
 };
 const PLOT_HEIGHT: f32 = 120.0;

@@ -5,7 +5,7 @@ fn main() -> std::io::Result<()> {
     }
     winresource::WindowsResource::new()
         .set_icon("image/icon.ico")
-        .set("ProductName", "MouseDrive")
-        .set("FileDescription", "MouseDrive")
+        .set("ProductName", "MouseFlight")
+        .set("FileDescription", "MouseFlight")
         .compile()
 }

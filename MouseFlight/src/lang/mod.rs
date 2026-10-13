@@ -305,6 +305,7 @@ pub struct Strings {
     pub window_secs: &'static str,
     pub tr_steer_out: &'static str,
     pub tr_steer_raw: &'static str,
+    pub tr_pitch: &'static str,
     pub tr_throttle: &'static str,
     pub tr_brake: &'static str,
     pub tr_lmb: &'static str,

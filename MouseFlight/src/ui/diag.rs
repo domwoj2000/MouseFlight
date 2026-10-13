@@ -1,10 +1,10 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Align, Layout, RichText, ScrollArea, Ui};
-use mousedrive::config::Config;
-use mousedrive::control::{SetupInfo, Snapshot};
-use mousedrive::diagnostics::{DiagnosticsInfo, format_report};
-use mousedrive::setup::format_version;
+use mouseflight::config::Config;
+use mouseflight::control::{SetupInfo, Snapshot};
+use mouseflight::diagnostics::{DiagnosticsInfo, format_report};
+use mouseflight::setup::format_version;
 
 use super::widgets::Cx;
 use crate::lang::{Lang, Strings, fill, strings};

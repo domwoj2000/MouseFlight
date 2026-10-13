@@ -5,6 +5,7 @@ use std::fmt;
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct OutputFrame {
     pub steering: f64,
+    pub pitch: f64,
     pub throttle: f64,
     pub brake: f64,
     pub buttons: u32,
@@ -18,6 +19,7 @@ pub const BUTTON_GEAR_DOWN: u32 = 1 << 1;
 impl OutputFrame {
     pub const NEUTRAL: Self = Self {
         steering: 0.0,
+        pitch: 0.0,
         throttle: 0.0,
         brake: 0.0,
         buttons: 0,
@@ -28,6 +30,7 @@ impl OutputFrame {
         let k = step as f64 / f64::from(TEST_PATTERN_SPAN);
         Self {
             steering: 2.0 * k - 1.0,
+            pitch: 2.0 * k - 1.0,
             throttle: k,
             brake: k,
             buttons: 0,
@@ -76,6 +79,7 @@ impl AxisRange {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub struct AxisRanges {
     pub steering: AxisRange,
+    pub pitch: AxisRange,
     pub throttle: AxisRange,
     pub brake: AxisRange,
 }
@@ -84,6 +88,7 @@ impl Default for AxisRanges {
     fn default() -> Self {
         Self {
             steering: AxisRange::DEFAULT,
+            pitch: AxisRange::DEFAULT,
             throttle: AxisRange::DEFAULT,
             brake: AxisRange::DEFAULT,
         }

@@ -1,10 +1,10 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{ComboBox, DragValue, OpenUrl, RichText, Ui};
-use mousedrive::config::{Config, MOUSE_DPI_RANGE};
-use mousedrive::control::{Command, Shared, Snapshot};
-use mousedrive::input::{self, DeviceFilter, MouseInfo};
-use mousedrive::status::Cue;
+use mouseflight::config::{Config, MOUSE_DPI_RANGE};
+use mouseflight::control::{Command, Shared, Snapshot};
+use mouseflight::input::{self, DeviceFilter, MouseInfo};
+use mouseflight::status::Cue;
 
 use super::calibration::Calibration;
 use super::keybind::{KeyBinder, KeyField, key_row};
@@ -15,7 +15,7 @@ use super::widgets::{
 };
 use crate::lang::{Lang, fill};
 
-const GAME_GUIDE_URL: &str = "https://github.com/MouseDrive/MouseDrive#in-game-settings";
+const GAME_GUIDE_URL: &str = "https://github.com/domwoj2000/MouseFlight#in-game-settings";
 pub const LOOP_INTERVALS_MS: [i32; 6] = [1, 2, 4, 5, 8, 10];
 const MOUSE_COMBO_WIDTH: f32 = 220.0;
 

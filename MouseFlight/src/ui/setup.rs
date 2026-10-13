@@ -3,8 +3,8 @@
 use std::path::{Path, PathBuf};
 
 use eframe::egui::{Context, DragValue, Grid, OpenUrl, RichText, Ui, Window};
-use mousedrive::control::{Command, SetupInfo, Shared, Snapshot};
-use mousedrive::setup::{
+use mouseflight::control::{Command, SetupInfo, Shared, Snapshot};
+use mouseflight::setup::{
     Check, CheckId, CheckState, DeviceState, Owner, SetupReport, format_version,
 };
 

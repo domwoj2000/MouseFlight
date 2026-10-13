@@ -7,6 +7,7 @@ use crate::{keys, overlay, vjoy};
 
 pub(crate) trait ControlIo {
     fn take_counts(&mut self) -> i64;
+    fn take_counts_y(&mut self) -> i64;
     fn buttons(&self) -> (bool, bool);
     fn take_middle_click(&mut self) -> bool;
     fn force_release(&mut self, button: MouseButton) -> bool;
@@ -49,6 +50,10 @@ impl WinIo {
 impl ControlIo for WinIo {
     fn take_counts(&mut self) -> i64 {
         input::take_counts()
+    }
+
+    fn take_counts_y(&mut self) -> i64 {
+        input::take_counts_y()
     }
 
     fn buttons(&self) -> (bool, bool) {

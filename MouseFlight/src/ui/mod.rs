@@ -30,12 +30,12 @@ use eframe::egui::{
     CentralPanel, Context, Id, Key, Modal, Modifiers, RichText, ScrollArea, SidePanel,
     TopBottomPanel, Ui, ViewportCommand,
 };
-use mousedrive::control::{Command, KEYBOARD_BINDING, KEYBOARD_TEXT, Shared, Snapshot};
-use mousedrive::input::{self, MouseInfo};
-use mousedrive::keys::{self, VK_ESCAPE};
-use mousedrive::session::Session;
-use mousedrive::status::AppStatus;
-use mousedrive::{log, overlay};
+use mouseflight::control::{Command, KEYBOARD_BINDING, KEYBOARD_TEXT, Shared, Snapshot};
+use mouseflight::input::{self, MouseInfo};
+use mouseflight::keys::{self, VK_ESCAPE};
+use mouseflight::session::Session;
+use mouseflight::status::AppStatus;
+use mouseflight::{log, overlay};
 
 use self::brake_tab::BrakeTab;
 use self::calibration::Calibration;

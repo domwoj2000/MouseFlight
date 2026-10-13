@@ -1,7 +1,7 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Color32, Context, Visuals};
-use mousedrive::status::{AppStatus, status_rgb};
+use mouseflight::status::{AppStatus, status_rgb};
 
 pub const ACCENT: Color32 = Color32::from_rgb(55, 138, 221);
 

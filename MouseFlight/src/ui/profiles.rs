@@ -3,9 +3,9 @@
 use eframe::egui::{
     Button, ComboBox, Context, Id, Key, Modal, RichText, TextEdit, Ui, WidgetInfo, WidgetType,
 };
-use mousedrive::control::{AbSide, Command, Shared, Snapshot};
-use mousedrive::profiles::{MAX_NAME_LEN, NameError, ProfileError, ProfileStore, validate_name};
-use mousedrive::session::Session;
+use mouseflight::control::{AbSide, Command, Shared, Snapshot};
+use mouseflight::profiles::{MAX_NAME_LEN, NameError, ProfileError, ProfileStore, validate_name};
+use mouseflight::session::Session;
 
 use super::notices::Notices;
 use super::startup::profile_corrected_notice;

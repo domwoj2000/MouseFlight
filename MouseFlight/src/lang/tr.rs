@@ -35,7 +35,7 @@ pub(super) static TR: Strings = Strings {
     pending_apply: "Pedallar bırakılınca uygulanacak…",
 
     setup_title: "Kurulum ve sağlık kontrolü",
-    setup_intro: "Her satır bir kontrolü çalıştırır. ✖ olan satırın altındaki adımı uygulayıp “Tekrar kontrol et”e basın; MouseDrive bağlantıyı kendisi de yeniden dener.",
+    setup_intro: "Her satır bir kontrolü çalıştırır. ✖ olan satırın altındaki adımı uygulayıp “Tekrar kontrol et”e basın; MouseFlight bağlantıyı kendisi de yeniden dener.",
     chk_dll: "vJoy yüklü",
     chk_driver: "vJoy sürücüsü etkin",
     chk_versions: "DLL ve sürücü sürümü",
@@ -274,6 +274,7 @@ pub(super) static TR: Strings = Strings {
     window_secs: "Süre",
     tr_steer_out: "Direksiyon (çıkış)",
     tr_steer_raw: "Direksiyon (ham)",
+    tr_pitch: "Yunuslama",
     tr_throttle: "Gaz",
     tr_brake: "Fren",
     tr_lmb: "Sol tık",
@@ -328,7 +329,7 @@ pub(super) static TR: Strings = Strings {
     tip_colorblind: "Gaz mavi, fren turuncu. Grafiklerde fren her zaman kesikli çizilir.",
     ui_zoom: "Arayüz ölçeği (%)",
     exit_on_close: "Kapatınca çık",
-    tip_exit_on_close: "Kapalıyken × düğmesi pencereyi simge durumuna küçültür; MouseDrive çalışmaya devam eder.",
+    tip_exit_on_close: "Kapalıyken × düğmesi pencereyi simge durumuna küçültür; MouseFlight çalışmaya devam eder.",
     sec_game: "Oyun içi ayarlar",
     game_checklist: [
         "Ölü bölge (deadzone): 0",

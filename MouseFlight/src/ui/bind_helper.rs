@@ -1,8 +1,8 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Button, Context, ProgressBar, RichText, Window};
-use mousedrive::bind::{BindPhase, BindTarget};
-use mousedrive::control::{Command, Shared, Snapshot};
+use mouseflight::bind::{BindPhase, BindTarget};
+use mouseflight::control::{Command, Shared, Snapshot};
 
 use super::widgets::Cx;
 use crate::lang::{Strings, fill};
