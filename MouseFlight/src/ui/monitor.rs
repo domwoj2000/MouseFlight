@@ -2,8 +2,8 @@
 
 use eframe::egui::{Color32, RichText, Ui};
 use egui_plot::{Legend, Line, LineStyle, Plot, PlotPoints, VLine};
-use mousedrive::control::Shared;
-use mousedrive::telemetry::{Marker, Sample, decimate_min_max};
+use mouseflight::control::Shared;
+use mouseflight::telemetry::{Marker, Sample, decimate_min_max};
 
 use super::widgets::Cx;
 
@@ -166,6 +166,10 @@ fn traces<'a>(samples: &[Sample], window: (f64, f64), cx: &Cx, weak: Color32) ->
             .color(cx.pal.accent)
             .width(1.5_f32)
             .name(s.tr_steer_out),
+        Line::new(trace(samples, window, |x| x.pitch_out))
+            .color(weak)
+            .style(LineStyle::dashed_loose())
+            .name(s.tr_pitch),
         Line::new(trace(samples, window, |x| x.throttle_out))
             .color(cx.pal.throttle)
             .width(1.5_f32)

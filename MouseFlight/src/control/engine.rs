@@ -5,7 +5,7 @@ use crate::config::{Config, Tuning};
 use crate::diagnostics::{LoopStats, LoopSummary, RateMeter};
 use crate::input::{DeviceFilter, InputCounters, MouseButton};
 use crate::keys::{UNBOUND, VK_LBUTTON, VK_RBUTTON};
-use crate::logic::{MouseDriveState, STEERING_RANGE, TickInput};
+use crate::logic::{MouseFlightState, STEERING_RANGE, TickInput};
 use crate::output::{BUTTON_GEAR_DOWN, BUTTON_GEAR_UP, OutputFrame};
 use crate::setup::REQUIRED_BUTTONS;
 use crate::status::{AppStatus, Cue, CuePlanner, Health, StatusInputs, derive_status};
@@ -54,7 +54,7 @@ pub(crate) struct Engine {
     config: Config,
     seen_epoch: u64,
     options: Options,
-    state: MouseDriveState,
+    state: MouseFlightState,
     capture: bool,
     last_now_ms: Option<f64>,
     tick_count: u64,
@@ -104,7 +104,7 @@ impl Engine {
             config,
             seen_epoch: epoch,
             options,
-            state: MouseDriveState::new(),
+            state: MouseFlightState::new(),
             capture: true,
             last_now_ms: None,
             tick_count: 0,
@@ -325,6 +325,7 @@ impl Engine {
 
     fn read_input(&mut self, dt_ms: f64, io: &mut impl ControlIo) -> TickInput {
         let counts = io.take_counts();
+        let counts_y = io.take_counts_y();
         self.counts_total = self.counts_total.wrapping_add(counts);
         if io.take_middle_click() {
             self.state.reset_steering();
@@ -343,6 +344,7 @@ impl Engine {
         let (left, right) = io.buttons();
         TickInput {
             counts_x: counts,
+            counts_y,
             throttle_pressed: left,
             brake_pressed: right,
             dt_ms,
@@ -494,7 +496,11 @@ impl Engine {
             counts_x: input
                 .counts_x
                 .clamp(i64::from(i32::MIN), i64::from(i32::MAX)) as i32,
+            counts_y: input
+                .counts_y
+                .clamp(i64::from(i32::MIN), i64::from(i32::MAX)) as i32,
             steering_raw: (s.steering / STEERING_RANGE) as f32,
+            pitch_out: frame.pitch as f32,
             steering_out: frame.steering as f32,
             throttle_pressed: input.throttle_pressed,
             throttle_target: s.throttle_target as f32,

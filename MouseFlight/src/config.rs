@@ -477,8 +477,14 @@ fn appdata_config_dir() -> Option<PathBuf> {
     let base = std::env::var_os("APPDATA")
         .map(PathBuf::from)
         .or_else(shell_appdata_dir)?;
-    let dir = base.join("MouseDrive");
+    let dir = base.join("MouseFlight");
     let _ = std::fs::create_dir_all(&dir);
+    // Preserve existing settings after the MouseDrive -> MouseFlight rename.
+    let new_config = dir.join("config.toml");
+    let legacy_config = base.join("MouseDrive").join("config.toml");
+    if !new_config.exists() && legacy_config.exists() {
+        let _ = std::fs::copy(legacy_config, &new_config);
+    }
     Some(dir)
 }
 

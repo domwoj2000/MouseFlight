@@ -1,8 +1,8 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Button, Context, DragValue, RichText, Ui, Window};
-use mousedrive::config::MOUSE_DPI_RANGE;
-use mousedrive::ergonomics::dpi_from_measurement;
+use mouseflight::config::MOUSE_DPI_RANGE;
+use mouseflight::ergonomics::dpi_from_measurement;
 
 use super::widgets::Cx;
 use crate::lang::{fill, parse_num};

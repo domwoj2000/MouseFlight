@@ -1,8 +1,8 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Button, RichText, Ui};
-use mousedrive::config::Config;
-use mousedrive::keys::UNBOUND;
+use mouseflight::config::Config;
+use mouseflight::keys::UNBOUND;
 
 use super::widgets::{Cx, key_text};
 

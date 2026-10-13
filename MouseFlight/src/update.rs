@@ -3,12 +3,12 @@
 use std::sync::{Arc, Mutex};
 use std::time::{Duration, SystemTime, UNIX_EPOCH};
 
-const RELEASES_API: &str = "https://api.github.com/repos/MouseDrive/MouseDrive/releases/latest";
+const RELEASES_API: &str = "https://api.github.com/repos/domwoj2000/MouseFlight/releases/latest";
 const HTTP_TIMEOUT_SECS: u64 = 5;
 const DOWNLOAD_TIMEOUT_SECS: u64 = 120;
 const MAX_ZIP_BYTES: u64 = 100 * 1024 * 1024;
 const MAX_SUMS_BYTES: u64 = 64 * 1024;
-const USER_AGENT: &str = concat!("MouseDrive/", env!("CARGO_PKG_VERSION"));
+const USER_AGENT: &str = concat!("MouseFlight/", env!("CARGO_PKG_VERSION"));
 
 #[derive(Clone, PartialEq, Debug)]
 pub struct ReleaseInfo {
@@ -140,7 +140,7 @@ fn parse_release_json(body: &str) -> Option<ReleaseInfo> {
             let (Some(name), Some(url)) = (name, url) else {
                 continue;
             };
-            if name.starts_with("MouseDrive-") && name.ends_with("-windows-x64.zip") {
+            if name.starts_with("MouseFlight-") && name.ends_with("-windows-x64.zip") {
                 zip_url = Some(url.to_string());
                 zip_name = name.to_string();
             } else if name == "SHA256SUMS.txt" {
@@ -172,7 +172,7 @@ fn run_update(info: &ReleaseInfo) -> Result<(), ()> {
 
     let exe_bytes = extract_exe(&zip_bytes)?;
 
-    let tmp = std::env::temp_dir().join("mousedrive-update.exe");
+    let tmp = std::env::temp_dir().join("mouseflight-update.exe");
     std::fs::write(&tmp, exe_bytes).map_err(|_| ())?;
     let replaced = self_replace::self_replace(&tmp);
     let _ = std::fs::remove_file(&tmp);
@@ -230,7 +230,7 @@ fn extract_exe(zip_bytes: &[u8]) -> Result<Vec<u8>, ()> {
             continue;
         }
         let base = name.rsplit(['/', '\\']).next().unwrap_or("");
-        if base.eq_ignore_ascii_case("mousedrive.exe") {
+        if base.eq_ignore_ascii_case("mouseflight.exe") {
             let mut out = Vec::new();
             file.read_to_end(&mut out).map_err(|_| ())?;
             if out.is_empty() {

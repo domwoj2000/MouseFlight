@@ -6,7 +6,7 @@ use eframe::egui::{
     Color32, ComboBox, Frame, Grid, Margin, Rect, Response, RichText, Sense, Slider, Stroke, Ui,
     WidgetInfo, WidgetType, pos2, vec2,
 };
-use mousedrive::keys::{KeyLabel, key_label};
+use mouseflight::keys::{KeyLabel, key_label};
 
 use super::theme::{Palette, text_on};
 use crate::lang::{Lang, Strings, fill, parse_num};

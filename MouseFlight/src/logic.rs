@@ -87,6 +87,7 @@ pub enum RampDir {
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct TickInput {
     pub counts_x: i64,
+    pub counts_y: i64,
     pub throttle_pressed: bool,
     pub brake_pressed: bool,
     pub dt_ms: f64,
@@ -141,8 +142,9 @@ fn apply_deadzone(steering: f64, deadzone: f64, sat_range: f64) -> f64 {
 }
 
 #[derive(Clone, Debug)]
-pub struct MouseDriveState {
+pub struct MouseFlightState {
     pub steering: f64,
+    pub pitch: f64,
     pub steering_filtered: f64,
     adaptive: OneEuro,
     pub clipped_ticks: u64,
@@ -166,16 +168,17 @@ pub struct MouseDriveState {
     pub last_input: TickInput,
 }
 
-impl Default for MouseDriveState {
+impl Default for MouseFlightState {
     fn default() -> Self {
         Self::new()
     }
 }
 
-impl MouseDriveState {
+impl MouseFlightState {
     pub fn new() -> Self {
         Self {
             steering: 0.0,
+            pitch: 0.0,
             steering_filtered: 0.0,
             adaptive: OneEuro::default(),
             clipped_ticks: 0,
@@ -206,6 +209,9 @@ impl MouseDriveState {
         self.clock_ms += dt_ms;
         self.last_input = input;
         self.update_steering(config, input.counts_x, dt_ms);
+        let pitch_delta =
+            input.counts_y as f64 * config.mouse_dpi_scale * config.tuning.mouse_sens;
+        self.pitch = (self.pitch - pitch_delta).clamp(-STEERING_RANGE, STEERING_RANGE);
         self.update_throttle(&config.tuning, input.throttle_pressed, dt_ms);
         self.update_brake(&config.tuning, input.brake_pressed, dt_ms);
     }
@@ -248,6 +254,10 @@ impl MouseDriveState {
         (self.steering_filtered / STEERING_RANGE).clamp(-1.0, 1.0)
     }
 
+    pub fn pitch_output(&self) -> f64 {
+        (self.pitch / STEERING_RANGE).clamp(-1.0, 1.0)
+    }
+
     fn steering_abs(&self) -> f64 {
         self.steering_output().abs()
     }
@@ -259,6 +269,7 @@ impl MouseDriveState {
     pub fn output_frame(&self, t: &Tuning, buttons: u32) -> OutputFrame {
         OutputFrame {
             steering: self.steering_output(),
+            pitch: self.pitch_output(),
             throttle: self.throttle.clamp(0.0, 1.0),
             brake: self.brake_output(t),
             buttons,

@@ -7,7 +7,7 @@ use std::time::{SystemTime, UNIX_EPOCH};
 const MAX_LOG_BYTES: u64 = 1024 * 1024;
 
 pub fn log_path() -> Option<PathBuf> {
-    Some(crate::config::config_dir()?.join("mousedrive.log"))
+    Some(crate::config::config_dir()?.join("mouseflight.log"))
 }
 
 fn rotate_if_large(path: &PathBuf) {

@@ -16,6 +16,7 @@ use crate::setup::{AxisCaps, DeviceState, Owner, SetupReport, Versions};
 pub const HID_USAGE_X: u32 = 0x30;
 pub const HID_USAGE_Y: u32 = 0x31;
 pub const HID_USAGE_Z: u32 = 0x32;
+pub const HID_USAGE_Z: u32 = 0x32;
 pub const HID_USAGE_RZ: u32 = 0x35;
 
 const DLL_NAME: &str = "vJoyInterface.dll";
@@ -92,6 +93,7 @@ impl JoystickPositionV3 {
     fn apply(&mut self, frame: &OutputFrame, ranges: &AxisRanges) {
         self.w_axis_x = ranges.steering.map_signed(frame.steering);
         self.w_axis_y = ranges.throttle.map_unit(frame.throttle);
+        self.w_axis_z = ranges.pitch.map_signed(frame.pitch);
         self.w_axis_z_rot = ranges.brake.map_unit(frame.brake);
         self.l_buttons = frame.buttons as i32;
     }
@@ -177,6 +179,7 @@ impl VJoyLib {
         AxisCaps {
             x: has(HID_USAGE_X),
             y: has(HID_USAGE_Y),
+            z: has(HID_USAGE_Z),
             rz: has(HID_USAGE_RZ),
         }
     }
@@ -387,6 +390,7 @@ impl VJoyDevice {
         }
         let ranges = AxisRanges {
             steering: lib.axis_range(id, HID_USAGE_X),
+            pitch: lib.axis_range(id, HID_USAGE_Z),
             throttle: lib.axis_range(id, HID_USAGE_Y),
             brake: lib.axis_range(id, HID_USAGE_RZ),
         };

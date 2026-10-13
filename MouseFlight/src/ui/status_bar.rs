@@ -1,9 +1,9 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Align, Layout, Ui};
-use mousedrive::config::Config;
-use mousedrive::control::{SetupInfo, Snapshot};
-use mousedrive::status::{AppStatus, Connection, Health};
+use mouseflight::config::Config;
+use mouseflight::control::{SetupInfo, Snapshot};
+use mouseflight::status::{AppStatus, Connection, Health};
 
 use super::setup::owner_label;
 use super::theme::status_color;

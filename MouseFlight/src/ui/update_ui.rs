@@ -1,7 +1,7 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{Button, OpenUrl, RichText, Ui};
-use mousedrive::config::Config;
+use mouseflight::config::Config;
 
 use super::theme::text_on;
 use super::widgets::Cx;

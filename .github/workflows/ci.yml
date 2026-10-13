@@ -23,16 +23,16 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          workspaces: MouseDrive
+          workspaces: MouseFlight
 
       - name: Format
-        run: cargo fmt --manifest-path MouseDrive/Cargo.toml --check
+        run: cargo fmt --manifest-path MouseFlight/Cargo.toml --check
 
       - name: Clippy
         shell: bash
         run: |
-          cargo clippy --manifest-path MouseDrive/Cargo.toml --all-targets --all-features -- -D warnings
-          cargo clippy --manifest-path MouseDrive/Cargo.toml --all-targets --no-default-features -- -D warnings
+          cargo clippy --manifest-path MouseFlight/Cargo.toml --all-targets --all-features -- -D warnings
+          cargo clippy --manifest-path MouseFlight/Cargo.toml --all-targets --no-default-features -- -D warnings
 
   release:
     name: Build & Release
@@ -48,7 +48,7 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
         with:
-          workspaces: MouseDrive
+          workspaces: MouseFlight
 
       - name: Set version from tag
         shell: pwsh
@@ -58,25 +58,25 @@ jobs:
             Write-Error "Gecersiz tag formati: ${{ github.ref_name }} (beklenen: vX.Y.Z)"
             exit 1
           }
-          $toml = Get-Content MouseDrive/Cargo.toml
+          $toml = Get-Content MouseFlight/Cargo.toml
           $toml = $toml -replace '^version = ".*"$', "version = `"$version`""
-          Set-Content MouseDrive/Cargo.toml $toml -Encoding utf8
+          Set-Content MouseFlight/Cargo.toml $toml -Encoding utf8
           Write-Host "Cargo.toml version -> $version"
 
       - name: Build release
-        run: cargo build --release --manifest-path MouseDrive/Cargo.toml
+        run: cargo build --release --manifest-path MouseFlight/Cargo.toml
 
       - name: Package
         shell: pwsh
         run: |
           $tag = "${{ github.ref_name }}"
-          $zipName = "MouseDrive-$tag-windows-x64.zip"
+          $zipName = "MouseFlight-$tag-windows-x64.zip"
           New-Item -ItemType Directory dist | Out-Null
-          Copy-Item MouseDrive/target/release/mousedrive.exe dist/
+          Copy-Item MouseFlight/target/release/mouseflight.exe dist/
           Copy-Item README.md, LICENSE dist/
           Compress-Archive -Path dist/* -DestinationPath $zipName
-          Copy-Item MouseDrive/target/release/mousedrive.exe .
-          $sums = foreach ($file in $zipName, "mousedrive.exe") {
+          Copy-Item MouseFlight/target/release/mouseflight.exe .
+          $sums = foreach ($file in $zipName, "mouseflight.exe") {
             "$((Get-FileHash $file -Algorithm SHA256).Hash.ToLower())  $file"
           }
           $sums | Out-File SHA256SUMS.txt -Encoding ascii
@@ -86,8 +86,8 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            MouseDrive-*-windows-x64.zip
-            mousedrive.exe
+            MouseFlight-*-windows-x64.zip
+            mouseflight.exe
             SHA256SUMS.txt
           generate_release_notes: true
           prerelease: ${{ contains(github.ref_name, '-') }}

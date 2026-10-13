@@ -1,9 +1,9 @@
 #![deny(unsafe_code)]
 
 use eframe::egui::{CollapsingHeader, DragValue, RichText, Ui};
-use mousedrive::config::{Config, Tuning};
-use mousedrive::ergonomics::{cm_for_full_lock, counts_for_full_lock, sens_for_cm};
-use mousedrive::logic::SteeringMode;
+use mouseflight::config::{Config, Tuning};
+use mouseflight::ergonomics::{cm_for_full_lock, counts_for_full_lock, sens_for_cm};
+use mouseflight::logic::SteeringMode;
 
 use super::widgets::{Cx, Fmt, Param, combo_row, grid, param_row};
 use crate::lang::{fill, parse_num};

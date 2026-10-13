@@ -12,13 +12,13 @@ use std::sync::atomic::{AtomicBool, Ordering};
 use std::thread::JoinHandle;
 
 use eframe::egui::{IconData, ViewportBuilder};
-use mousedrive::control::{self, Options, Shared};
-use mousedrive::{input, log, overlay, platform};
+use mouseflight::control::{self, Options, Shared};
+use mouseflight::{input, log, overlay, platform};
 
 use crate::lang::Lang;
 use crate::ui::{App, Startup, status_labels};
 
-const TITLE: &str = concat!("MouseDrive v", env!("CARGO_PKG_VERSION"));
+const TITLE: &str = concat!("MouseFlight v", env!("CARGO_PKG_VERSION"));
 const WINDOW_SIZE: [f32; 2] = [1000.0, 640.0];
 const WINDOW_MIN_SIZE: [f32; 2] = [760.0, 500.0];
 const APP_ICON_PNG: &[u8] = include_bytes!("../image/icon.png");
@@ -119,7 +119,7 @@ fn run_window(
         ..Default::default()
     };
     eframe::run_native(
-        "MouseDrive",
+        "MouseFlight",
         options,
         Box::new(move |_cc| {
             let mut app = App::new(startup, shared, restart);

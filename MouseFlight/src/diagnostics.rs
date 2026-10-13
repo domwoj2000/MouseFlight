@@ -118,7 +118,7 @@ fn opt(v: &Option<String>) -> &str {
 pub fn format_report(i: &DiagnosticsInfo) -> String {
     let l = &i.loop_summary;
     let mut s = String::new();
-    let _ = writeln!(s, "MouseDrive diagnostics");
+    let _ = writeln!(s, "MouseFlight diagnostics");
     let _ = writeln!(s, "version: {}", i.app_version);
     let _ = writeln!(s, "os: {}", i.os);
     let _ = writeln!(s, "status: {}", i.status);

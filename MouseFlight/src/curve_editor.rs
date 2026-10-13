@@ -4,7 +4,7 @@ use eframe::egui::{
     Button, ComboBox, DragValue, EventFilter, Id, Key, Painter, Pos2, Rect, Response, RichText,
     Sense, Shape, Stroke, StrokeKind, Ui, WidgetInfo, WidgetType, emath, pos2, vec2,
 };
-use mousedrive::curve::{Curve, CurveMode, CurvePreset};
+use mouseflight::curve::{Curve, CurveMode, CurvePreset};
 
 use crate::lang::{Lang, Strings, fill, parse_num};
 

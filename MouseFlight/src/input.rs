@@ -428,7 +428,7 @@ fn thread_main() {
 }
 
 fn create_window() -> Option<HWND> {
-    let class_name = w!("MouseDriveRawInput");
+    let class_name = w!("MouseFlightRawInput");
     // SAFETY: sınıf yapısı geçerli ve statik bir sınıf adı kullanıyor; pencere
     // yalnız bu thread'de kullanılır.
     unsafe {

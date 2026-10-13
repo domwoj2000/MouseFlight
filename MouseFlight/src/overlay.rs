@@ -188,7 +188,7 @@ fn apply_config(window: &mut Option<HWND>) {
 }
 
 fn create_window() -> Option<HWND> {
-    let class_name = w!("MouseDriveOverlay");
+    let class_name = w!("MouseFlightOverlay");
     // SAFETY: sınıf yapısı geçerli, sınıf adı statik; pencere yalnız bu
     // thread'de kullanılır.
     unsafe {
@@ -336,7 +336,7 @@ fn current_label(status: AppStatus) -> Vec<u16> {
         .and_then(|l| l.get(status.index()).cloned())
         .filter(|s| !s.is_empty())
         .unwrap_or_else(|| format!("{status:?}"));
-    format!("MouseDrive · {text}").encode_utf16().collect()
+    format!("MouseFlight · {text}").encode_utf16().collect()
 }
 
 fn paint(hwnd: HWND) {

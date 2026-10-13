@@ -2,8 +2,8 @@
 
 use std::path::{Path, PathBuf};
 
-use mousedrive::config::{self, Config, LoadNotice};
-use mousedrive::profiles::ProfileStore;
+use mouseflight::config::{self, Config, LoadNotice};
+use mouseflight::profiles::ProfileStore;
 
 use super::notices::{Level, Notice};
 use crate::lang::{Lang, Strings, fill, strings};

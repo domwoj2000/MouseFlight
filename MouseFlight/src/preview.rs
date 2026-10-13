@@ -2,7 +2,7 @@
 
 use crate::config::{Config, Tuning};
 use crate::logic::{
-    BrakePhase, MouseDriveState, STEERING_RANGE, SteeringMode, THROTTLE_CUT_REFERENCE, TickInput,
+    BrakePhase, MouseFlightState, STEERING_RANGE, SteeringMode, THROTTLE_CUT_REFERENCE, TickInput,
     throttle_cut_bounds, throttle_cut_factor,
 };
 
@@ -67,13 +67,14 @@ pub fn brake_timeline(tuning: &Tuning, press_ms: f64, steer_abs: f64) -> BrakeTi
         0.0
     };
     let steer_counts = (steer_abs.clamp(0.0, 1.0) * STEERING_RANGE).round() as i64;
-    let mut state = MouseDriveState::new();
+    let mut state = MouseFlightState::new();
     let mut rec = Recorder::new();
     let mut t_ms = 0.0;
     loop {
         let pressed = t_ms < press_ms;
         let input = TickInput {
             counts_x: if t_ms == 0.0 { steer_counts } else { 0 },
+            counts_y: 0,
             throttle_pressed: false,
             brake_pressed: pressed,
             dt_ms: SIM_STEP_MS,
