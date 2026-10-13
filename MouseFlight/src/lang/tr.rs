@@ -50,7 +50,7 @@ pub(super) static TR: Strings = Strings {
     fix_device_busy: "Cihazı başka bir besleyici (Joystick Gremlin, SimHub, UCR…) tutuyor. Onu kapatın ya da aşağıdan boşta olan bir cihaz seçin.",
     fix_device_missing: "vJoy #{id} tanımlı değil. “Configure vJoy”da #{id} sekmesini açıp Add Device'a basın ya da var olan bir cihaz numarası seçin.",
     fix_device_acquire: "Cihaz sahiplenilemedi. “Configure vJoy”da cihazı kapatıp açın; düzelmezse bilgisayarı yeniden başlatın.",
-    fix_axes: "Direksiyon, gaz ya da fren çalışmaz: vJoy #{id}'de gerekli eksenler kapalı. “Configure vJoy”da X, Y ve Rz'yi işaretleyip Apply'a basın.",
+    fix_axes: "Uçuş eksenleri çalışmaz: vJoy #{id}'de gerekli eksenler kapalı. “Configure vJoy”da X, Y, Z ve Rz'yi işaretleyip Apply'a basın.",
     fix_buttons: "Vites tuşları için en az 2 buton gerekir. “Configure vJoy”da “Number of Buttons” değerini artırın ya da vites tuşlarını kapatın.",
     dev_free: "boşta, bağlandı",
     dev_busy: "başka bir uygulamada: {owner}",
