@@ -50,7 +50,7 @@ pub(super) static EN: Strings = Strings {
     fix_device_busy: "Another feeder (Joystick Gremlin, SimHub, UCR…) holds the device. Close it or pick a free device below.",
     fix_device_missing: "vJoy #{id} is not configured. Open tab #{id} in “Configure vJoy” and press Add Device, or pick an existing device number.",
     fix_device_acquire: "The device could not be acquired. Disable and re-enable it in “Configure vJoy”; restart the PC if that does not help.",
-    fix_axes: "Steering, throttle or brake will not work: required axes are disabled on vJoy #{id}. Tick X, Y and Rz in “Configure vJoy” and press Apply.",
+    fix_axes: "Flight axes will not work: required axes are disabled on vJoy #{id}. Tick X, Y, Z and Rz in “Configure vJoy” and press Apply.",
     fix_buttons: "Gear keys need at least 2 buttons. Raise “Number of Buttons” in “Configure vJoy” or turn gear keys off.",
     dev_free: "free, connected",
     dev_busy: "used by: {owner}",
